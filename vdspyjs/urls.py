@@ -19,7 +19,7 @@ from main.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/todolist/',ToDoListUser.as_view()),
+    path('api/todolist/', ToDoLitUser.as_view()),
     path('api/todolist/<int:pk>',ToDoListUpdate.as_view()),
     path('api/todolist/delete/<int:pk>',ToDoListDelete.as_view()),
 ]
