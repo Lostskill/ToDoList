@@ -15,7 +15,6 @@ const PostForm = ({ value, option, defaultValue }) => {
     }
 
     async function putPost(data) {
-        console.log(data)
         const res = TodoService.postTodo(data);
         console.log(res)
     };
@@ -31,8 +30,8 @@ const PostForm = ({ value, option, defaultValue }) => {
     }
     return (
         <form>
-            <MyInput type='text' placeholder='Название поста' value={title.title} onChange={e => setTitle({title:e.target.value})} />
-            <MyInput type='text' placeholder='Описание поста' value={disc.description} onChange={e => setDisc({ description: e.target.value })}  />
+            <MyInput type='text' placeholder='Название Задачи' value={title.title} onChange={e => setTitle({title:e.target.value})} />
+            <MyInput type='text' placeholder='Описание Задачи' value={disc.description} onChange={e => setDisc({ description: e.target.value })}  />
             <MySelect
             value={value}
             defaultValue = {defaultValue}
