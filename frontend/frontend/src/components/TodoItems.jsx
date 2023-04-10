@@ -2,7 +2,7 @@ import React from 'react';
 
 const ToDoItem = (props) => {
     return (
-        <div>
+        <div className = "items">
             <strong>{props.post.id} {props.post.title}</strong>
             <div>{ props.post.category}</div>
             <div>

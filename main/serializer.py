@@ -5,4 +5,9 @@ class ToDoListSerializer(serializers.ModelSerializer):
     category = serializers.CharField(source='cat.name', read_only=True)
     class Meta:
         model = ToDoList
-        fields = ['id','title','description','time_create','category']
+        fields = ['id','title','description','time_create','category','cat']
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = "__all__"

@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/todolist/', ToDoLitUser.as_view()),
     path('api/todolist/<int:pk>',ToDoListUpdate.as_view()),
     path('api/todolist/delete/<int:pk>',ToDoListDelete.as_view()),
+    path('api/todolist/getcat/', CategoryGet.as_view()),
 ]

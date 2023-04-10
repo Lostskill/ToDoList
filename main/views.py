@@ -13,3 +13,7 @@ class ToDoListUpdate(generics.RetrieveUpdateAPIView):
 class ToDoListDelete(generics.RetrieveDestroyAPIView):
     queryset = ToDoList.objects.all()
     serializer_class = ToDoListSerializer
+
+class CategoryGet(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
