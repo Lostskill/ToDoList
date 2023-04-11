@@ -34,10 +34,9 @@ function App(){
       <MyModal visible={modal} setVisible={setModal} >
           <PostForm value={cats} option={cats} defaultValue="Категория" />
       </MyModal>
-      
       {isPostsLoading 
-      ? <div style={{display:'flex', justifyContent:'center', marginTop:50}}><Loader/></div>
-      :<TodoList post={post} value={cats}  title='Список Постов ' />
+        ?<div style={{display:'flex', justifyContent:'center', marginTop:50}}><Loader/></div>
+        :<TodoList post={post} value={cats}   title='Список Постов ' />
       }
     </div>
   )   

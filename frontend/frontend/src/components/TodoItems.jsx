@@ -3,22 +3,24 @@ import MyButton from './UI/button/MyButton';
 import TodoService from './API/ToDoService';
 import MyModal from './UI/MyModal/MyModal';
 import PostForm from './PostForm';
-const ToDoItem = ({ props, value }) => {
+const ToDoItem = ({post,value}) => {
     const [modalupdate, setModalUpdate] = useState(false);
     return (
         <div className = "items">
-            <strong>{props.post.title}</strong>
-            <div>{ props.post.category}</div>
+            <strong>{post.title}</strong>
+            <div>{ post.category}</div>
             <div>
-                {props.post.description}
-                <a style={{color:'green'} } >{props.post.time_create}</a>
+                {post.description}
+                <a style={{color:'green'} } >{post.time_create}</a>
             </div>
             <div>
                 <MyButton onClick = {() => setModalUpdate(true)}>Изменить</MyButton>
             </div>
-
+            <MyModal visible={modalupdate} setVisible={setModalUpdate}>
+                <PostForm value={value} option={value} defaultValue='Категория' flag={true } idPutToDO={post.id} />
+            </MyModal>
             <div>
-                <button type="submit" onClick={() => { TodoService.deleteTodo(props.post.id); document.location.reload(); }}>Удалить</button>
+                <button type="submit" onClick={() => { TodoService.deleteTodo(post.id); document.location.reload(); }}>Удалить</button>
             </div>
         </div>
     )

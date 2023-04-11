@@ -4,12 +4,10 @@ import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
 import TodoService from "./API/ToDoService";
 
-const PostForm = ({ value, option, defaultValue ,idP, flag}) => {
+const PostForm = ({ value, option, defaultValue, flag,idPutToDO})  => {
     const [title, setTitle] = useState({ title: '' });
     const [disc, setDisc] = useState({ description: '' })
-    const [idPost, setIdPost] = useState()
     const [ids, setids] = useState();
-    setIdPost(idP);
     
     function log(e) {
         setids(e)
@@ -31,13 +29,15 @@ const PostForm = ({ value, option, defaultValue ,idP, flag}) => {
             title: title.title,
             description: disc.description,
             cat: Number(ids)
-        }
+        };
         if (flag) {
-            PostForm(newPost);
+            PutForm(newPost, idPutToDO);
         }
-        PutForm(newPost,idPost)
-        
-    }
+        else {
+            PostForm(newPost);
+        };
+
+    };
     return (
         <form>
             <MyInput type='text' placeholder='Название Задачи' value={title.title} onChange={e => setTitle({title:e.target.value})} />
@@ -45,10 +45,10 @@ const PostForm = ({ value, option, defaultValue ,idP, flag}) => {
             <MySelect
             value={value}
             defaultValue = {defaultValue}
-            option={option }
+            option={option}
             onChange ={log}
             />
-            <MyButton onClick={addNewPost} >Создать</MyButton>
+            <MyButton onClick={addNewPost} >Отправить</MyButton>
         </form>
     )
 }
