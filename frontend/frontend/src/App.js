@@ -28,7 +28,7 @@ function App(){
 
   return (
     <div>
-      <MyButton style={{marginTop:30 }} onClick={() => setModal(true)}>
+      <MyButton style={{ marginTop: 30, marginbottom: 30, marginleft:300,marginright:300 }} onClick={() => setModal(true)}>
         Создать Пост
       </MyButton>
       <MyModal visible={modal} setVisible={setModal} >
@@ -37,7 +37,7 @@ function App(){
       
       {isPostsLoading 
       ? <div style={{display:'flex', justifyContent:'center', marginTop:50}}><Loader/></div>
-      :<TodoList post={post} title='Список Постов ' />
+      :<TodoList post={post} value={cats}  title='Список Постов ' />
       }
     </div>
   )   

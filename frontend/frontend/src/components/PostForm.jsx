@@ -4,17 +4,23 @@ import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
 import TodoService from "./API/ToDoService";
 
-const PostForm = ({ value, option, defaultValue }) => {
+const PostForm = ({ value, option, defaultValue ,idP, flag}) => {
     const [title, setTitle] = useState({ title: '' });
-    const [disc, setDisc] = useState({description:''})
+    const [disc, setDisc] = useState({ description: '' })
+    const [idPost, setIdPost] = useState()
     const [ids, setids] = useState();
-
+    setIdPost(idP);
     
     function log(e) {
         setids(e)
     }
 
-    async function putPost(data) {
+    async function PutForm(data,index) {
+        const res = TodoService.putTodo(index, data);
+        return res
+    }
+
+    async function PostForm(data) {
         const res = TodoService.postTodo(data);
         console.log(res)
     };
@@ -26,7 +32,11 @@ const PostForm = ({ value, option, defaultValue }) => {
             description: disc.description,
             cat: Number(ids)
         }
-        putPost(newPost);
+        if (flag) {
+            PostForm(newPost);
+        }
+        PutForm(newPost,idPost)
+        
     }
     return (
         <form>
