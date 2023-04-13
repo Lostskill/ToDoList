@@ -39,9 +39,24 @@
   }
 }
 
+
+
 .ButtonForm{
   right: 300px;
   left: 300px;
 }
 
+.navbar{
+  height: 50px;
+  width: auto;
+  display:flex;
+  align-items: center;
+  padding:0 15px;
+  background-color: lightgray;
+}
+
+.navbar__links{
+  margin-left: auto;
+  padding: auto;
+}
 

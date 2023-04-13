@@ -26,4 +26,14 @@ export default class TodoService {
         return res_put;
     };
 
-}
+    static async registerUser(user) {
+        const res_reg = await axios.post('http://127.0.0.1:8000/api/todolist/auth/users/', user)
+        console.log(res_reg.data)
+    };
+
+    static async logUser(user) {
+      const res_log = await axios.post('http://127.0.0.1:8000/auth/token/login/',user)  
+      console.log(res_log.data)
+    };    
+
+};
