@@ -18,20 +18,22 @@ function Main(){
 
   async function fetchList() {
     setIsPostsLoading(true);
-    const response_data_todo = await TodoService.getTodo();
+    const token = localStorage.getItem('token');
+    const response_data_todo = await TodoService.getTodo({Authorization: 'Token '+ JSON.parse(token) });
     const response_data_cat = await TodoService.getCategory();
     setPosts(response_data_todo);
     setCats(response_data_cat);
     setIsPostsLoading(false);
+    
   }
 
   return (
     <div>
       <MyButton style={{ marginTop: 30, marginbottom: 30, marginleft:300,marginright:300 }} onClick={() => setModal(true)}>
-        Создать Пост
+        Создать Запись
       </MyButton>
       <MyModal visible={modal} setVisible={setModal} >
-          <PostForm value={cats} option={cats} defaultValue="Категория" />
+          <PostForm value={cats} option={cats}  defaultValue="Категория" />
       </MyModal>
       {isPostsLoading 
         ?<div style={{display:'flex', justifyContent:'center', marginTop:50}}><Loader/></div>

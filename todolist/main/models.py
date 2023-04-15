@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -10,6 +10,7 @@ class ToDoLists(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     cat = models.ForeignKey(
         'Categorys', on_delete=models.PROTECT, null=True, blank=True)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
 
 class Categorys(models.Model):

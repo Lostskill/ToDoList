@@ -14,27 +14,33 @@ const PostForm = ({ value, option, defaultValue, flag,idPutToDO})  => {
     }
 
     async function PutForm(data,index) {
-        const res = TodoService.putTodo(index, data);
+        const token = localStorage.getItem('token');
+        const res = TodoService.putTodo(index, data,{Authorization: 'Token '+ JSON.parse(token) });
         return res
     }
 
     async function PostForm(data) {
-        const res = TodoService.postTodo(data);
+        const token = localStorage.getItem('token');
+        const res = TodoService.postTodo(data,{Authorization: 'Token '+ JSON.parse(token) });
         console.log(res)
     };
 
 
-    const addNewPost = () => {
+    const addNewPost = (e) => {
+        e.preventDefault();
         const newPost = {
             title: title.title,
             description: disc.description,
             cat: Number(ids)
         };
+        console.log(newPost)
         if (flag) {
             PutForm(newPost, idPutToDO);
+            document.location.reload()
         }
         else {
             PostForm(newPost);
+            document.location.reload()
         };
 
     };
@@ -48,7 +54,7 @@ const PostForm = ({ value, option, defaultValue, flag,idPutToDO})  => {
             option={option}
             onChange ={log}
             />
-            <MyButton onClick={addNewPost} >Отправить</MyButton>
+            <MyButton onClick={addNewPost}  >Отправить</MyButton>
         </form>
     )
 }

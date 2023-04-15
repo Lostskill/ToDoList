@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
 import TodoService from "./API/ToDoService";
-
+import { Navigate } from "react-router-dom";
 const RegisterForm = () => {
     const [username, setUsername] = useState({ username: '' });
     const [email, setEmail] = useState({ email: '' });
     const [password, setPassword] = useState({ password: '' });
-
-
+    const [state, setState] = useState({ redirect: false })
+    
     function regUser(newUser) {
         const res = TodoService.registerUser(newUser);
         console.log(res);
@@ -26,9 +26,14 @@ const RegisterForm = () => {
                 password: password.password,
             };
             regUser(newUser);
-        }; 
+            setState({ redirect:true})
+        };
         
-    }
+    };
+    if (state.redirect) {
+        return <Navigate push to = '/'/>
+    };
+
         return (
             <form>
                 <MyInput type="text" placeholder='Логин' value={username.username} onChange={e => setUsername({ username: e.target.value })} />
