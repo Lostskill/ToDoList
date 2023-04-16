@@ -1,15 +1,16 @@
-import React from "react";
+import {React} from "react";
 import TodoService from "./API/ToDoService";
-
 const LogOut = ()=>{
-    function logout() {
+  function logout() {
       TodoService.logout();
-    };
     localStorage.clear();
-    logout();
+    document.location.reload();
+    document.location.reload();
+  };
 
+    
     return (
-      <h1>Вы вышли</h1>  
+      <button onClick={logout} >Выйти</button>
     );
 };
 

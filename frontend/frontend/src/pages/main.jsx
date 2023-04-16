@@ -33,11 +33,11 @@ function Main(){
         Создать Запись
       </MyButton>
       <MyModal visible={modal} setVisible={setModal} >
-          <PostForm value={cats} option={cats}  defaultValue="Категория" />
+          <PostForm value={cats} option={cats} post={post}  defaultValue="Категория" />
       </MyModal>
       {isPostsLoading 
         ?<div style={{display:'flex', justifyContent:'center', marginTop:50}}><Loader/></div>
-        :<TodoList post={post} value={cats}   title='Список Постов ' />
+        :<TodoList post={post} value={cats} option={cats}   title='Список Постов ' />
       }
     </div>
   )   

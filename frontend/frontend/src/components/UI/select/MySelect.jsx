@@ -5,7 +5,7 @@ const MySelect = ({ value, defaultValue, option,onChange }) => {
         <select value={value} onChange={event => onChange(event.target.value)}>
             <option  value='' >{defaultValue}</option>
             {option.map(option =>
-                <option value = {option.id} >
+                <option value = {option.id} key={option.id} >
                     {option.name}
                 </option>
             )}

@@ -3,7 +3,7 @@ import MyButton from './UI/button/MyButton';
 import TodoService from './API/ToDoService';
 import MyModal from './UI/MyModal/MyModal';
 import PostForm from './PostForm';
-const ToDoItem = ({post,value}) => {
+const ToDoItem = ({post,value,option}) => {
     const [modalupdate, setModalUpdate] = useState(false);
     const token = localStorage.getItem('token');
 
@@ -19,7 +19,7 @@ const ToDoItem = ({post,value}) => {
                 <MyButton onClick = {() => setModalUpdate(true)}>Изменить</MyButton>
             </div>
             <MyModal visible={modalupdate} setVisible={setModalUpdate}>
-                <PostForm value={value} option={value} defaultValue='Категория' flag={true } idPutToDO={post.id} />
+                <PostForm value={value} option={option} defaultValue='Категория' flag={true } idPutToDO={post.id} />
             </MyModal>
             <div>
                 <button type="submit" onClick={() => { TodoService.deleteTodo(post.id,{Authorization: 'Token '+ JSON.parse(token) }); document.location.reload(); }}>Удалить</button>
